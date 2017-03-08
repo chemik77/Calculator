@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<fx:root alignment="CENTER" hgap="2.0" prefHeight="292.0" prefWidth="243.0" type="GridPane" vgap="2.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.chemik77.calculator.Controller">
+   <rowConstraints>
+      <RowConstraints prefHeight="20.0" />
+      <RowConstraints prefHeight="10.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+      <RowConstraints minHeight="10.0" prefHeight="40.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints minWidth="10.0" prefWidth="45.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="45.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="45.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="45.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="45.0" />
+   </columnConstraints>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <children>
+      <MenuBar fx:id="menuBar" prefHeight="20.0" prefWidth="233.0" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Options">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextField fx:id="textField" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="233.0" promptText="0" GridPane.columnSpan="5" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <font>
+            <Font name="Arial" size="21.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btn0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn0" prefHeight="40.0" prefWidth="92.0" text="0" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.rowIndex="7">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn1" prefHeight="40.0" prefWidth="45.0" text="1" textAlignment="CENTER" GridPane.rowIndex="6">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn2" prefHeight="40.0" prefWidth="45.0" text="2" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn3" prefHeight="40.0" prefWidth="45.0" text="3" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="6">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn4" prefHeight="40.0" prefWidth="45.0" text="4" textAlignment="CENTER" GridPane.rowIndex="5">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn5" prefHeight="40.0" prefWidth="45.0" text="5" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn6" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn6" prefHeight="40.0" prefWidth="45.0" text="6" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn7" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn7" prefHeight="40.0" prefWidth="45.0" text="7" textAlignment="CENTER" GridPane.rowIndex="4">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn8" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn8" prefHeight="40.0" prefWidth="45.0" text="8" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn9" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtn9" prefHeight="40.0" prefWidth="45.0" text="9" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnPoi" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnPoi" prefHeight="40.0" prefWidth="45.0" text="," textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="7">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAC" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnAC" prefHeight="40.0" prefWidth="45.0" text="AC" textAlignment="CENTER" GridPane.rowIndex="3">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAdd" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnAdd" prefHeight="40.0" prefWidth="45.0" text="+" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="7">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSub" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnSub" prefHeight="40.0" prefWidth="45.0" text="-" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="6">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnMul" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnMul" prefHeight="40.0" prefWidth="45.0" text="*" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="5">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDiv" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnDiv" prefHeight="40.0" prefWidth="45.0" text="/" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="4">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRes" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnRes" prefHeight="82.0" prefWidth="45.0" text="=" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="6" GridPane.rowSpan="2">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="5">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</fx:root>
