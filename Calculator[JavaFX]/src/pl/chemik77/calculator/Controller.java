@@ -107,12 +107,10 @@ public class Controller implements Initializable{
 
 	//--------------------------------składowe----------------------------------------------------------
 	
-	double aD, bD;
-	int aI, bI;
+	double a, b;
 	String sNumber = "";
 	char operator;
-	double resultD;
-	int resultI;
+	double result;
 	
 	//--------------------------------metody FXML----------------------------------------------------------
 	
@@ -212,17 +210,11 @@ public class Controller implements Initializable{
     @FXML
     public void pressBtnRes() {
     	bSetNumber();
-    	String a = Double.toString(aI + aD);
-    	String b = Double.toString(bI + bD);
-    	if(a.endsWith(".0") && b.endsWith(".0") && operator != '/') {
-    		dzialanieInteger();
-    	} else {
-    		dzialanieDouble();
-    	}
-    	String result = Double.toString(resultI + resultD);
-    	if(result.endsWith(".0"))
-    		result = result.replace(".0", "");
-    	textField.setText(result);
+    	dzialanie();
+    	String res = Double.toString(result);
+    	if(res.endsWith(".0"))
+    		res = res.replace(".0", "");
+    	textField.setText(res);
     	sprawdzZmienne();
     	reset();
     }
@@ -234,69 +226,41 @@ public class Controller implements Initializable{
     	textField.setText(sNumber);
     }
     
-    private boolean isInteger() {
-    	return (!textField.getText().contains("."));
-    }
-    
     private void sprawdzZmienne() {
-    	System.out.println("aI: " + aI + " aD: " + aD + " " + operator + " " + " bI: " + bI + " bD: " + bD + " = "+ " resultI: " + resultI + " resultD: " + resultD);
+    	System.out.println(a + " " + operator + " " + b + " = " + result);
     }
     
     private void aSetNumber() {
-    	if(isInteger())
-    		aI = Integer.parseInt(sNumber);
-    	else 
-    		aD = Double.parseDouble(sNumber);
+    		a = Double.parseDouble(sNumber);
     }
     
     private void bSetNumber() {
-    	if(isInteger())
-    		bI = Integer.parseInt(sNumber);
-    	else 
-    		bD = Double.parseDouble(sNumber);
+    		b = Double.parseDouble(sNumber);
     }
     
     
     
     private void reset() {
-    	aI = 0;
-    	aD = 0;
-    	bI = 0;
-    	bD = 0;
+    	a = 0;
+    	b = 0;
     	operator = 0;
     	sNumber = "";
-    	resultI = 0;
-    	resultD = 0;
+    	result = 0;
     }
-    private void dzialanieInteger() {
+    
+    private void dzialanie() {
     	switch(operator) {
 	    	case '+': 
-	    		resultI = aI + bI;
+	    		result = a + b;
 	    		break;
 	    	case '-':
-	    		resultI = aI - bI;
+	    		result = a - b;
 	    		break;
 	    	case '*':
-	    		resultI = aI * bI;
+	    		result = a * b;
 	    		break;
 	    	case '/':
-	    		resultD = aI / bI;
-	    		break;
-    	}
-    }
-    private void dzialanieDouble() {
-    	switch(operator) {
-	    	case '+': 
-	    		resultD = (aI + aD) + (bI + bD);
-	    		break;
-	    	case '-':
-	    		resultD = (aI + aD) - (bI + bD);
-	    		break;
-	    	case '*':
-	    		resultD = (aI + aD) * (bI + bD);
-	    		break;
-	    	case '/':
-	    		resultD = (aI + aD) / (bI + bD);
+	    		result = a / b;
 	    		break;
     	}
     }
