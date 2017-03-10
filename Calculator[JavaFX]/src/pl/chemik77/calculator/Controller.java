@@ -203,6 +203,8 @@ public class Controller implements Initializable{
     public void pressBtnPoi() {
     	if(textField.getText().contains("."))
     		return;
+    	if(textField.getText().isEmpty())
+    		sNumber += "0.";
     	sNumber += ".";
     	textField.setText(sNumber);
     }
@@ -222,6 +224,8 @@ public class Controller implements Initializable{
     //--------------------------------metody----------------------------------------------------------
     
     private void pressBtnNumber(String btnNumber) {
+    	if(sNumber.length() == 17)
+    		return;
     	sNumber += btnNumber;
     	textField.setText(sNumber);
     }

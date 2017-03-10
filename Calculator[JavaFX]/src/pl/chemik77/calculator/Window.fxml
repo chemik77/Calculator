@@ -38,7 +38,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TextField fx:id="textField" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="233.0" promptText="0" GridPane.columnSpan="5" GridPane.rowIndex="2">
+      <TextField fx:id="textField" alignment="CENTER_RIGHT" editable="false" prefHeight="40.0" prefWidth="233.0" promptText="0" GridPane.columnSpan="5" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
