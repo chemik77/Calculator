@@ -105,11 +105,16 @@ public class Controller implements Initializable{
     
 	//--------------------------------initialize logic----------------------------------------------------
 
+	//--------------------------------składowe----------------------------------------------------------
 	
-	double a, b;
-	String s = "";
+	double aD, bD;
+	int aI, bI;
+	String sNumber = "";
 	char operator;
-	double result;
+	double resultD;
+	int resultI;
+	
+	//--------------------------------metody FXML----------------------------------------------------------
 	
 	@FXML
     public void pressBtnAC() {
@@ -120,172 +125,179 @@ public class Controller implements Initializable{
     @FXML
     public void pressBtnDiv() {
     	operator = '/';
-    	s = "";
+    	aSetNumber();
+    	sNumber = "";
     }
 
     @FXML
     public void pressBtn8() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 8);
-    	} else {
-    		b = pressBtnNum("" + 8);
-    	}
+    	pressBtnNumber("" + 8);
     }
 
     @FXML
     public void pressBtn9() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 9);
-    	} else {
-    		b = pressBtnNum("" + 9);
-    	}
-    	
+    	pressBtnNumber("" + 9);
     }
 
     @FXML
     public void pressBtn6() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 6);
-    	} else {
-    		b = pressBtnNum("" + 6);
-    	}
+    	pressBtnNumber("" + 6);
     }
 
     @FXML
     public void pressBtnSub() {
     	operator = '-';
-    	s = "";
+    	aSetNumber();
+    	sNumber = "";
     }
 
     @FXML
     public void pressBtn7() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 7);
-    	} else {
-    		b = pressBtnNum("" + 7);
-    	}
+    	pressBtnNumber("" + 7);
     }
 
     @FXML
     public void pressBtnAdd() {
     	operator = '+';
-    	s = "";
+    	aSetNumber();
+    	sNumber = "";
     }
 
     @FXML
     public void pressBtn4() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 4);
-    	} else {
-    		b = pressBtnNum("" + 4);
-    	}
+    	pressBtnNumber("" + 4);
     }
 
     @FXML
     public void pressBtn5() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 5);
-    	} else {
-    		b = pressBtnNum("" + 5);
-    	}
+    	pressBtnNumber("" + 5);
     }
 
     @FXML
     public void pressBtn2() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 2);
-    	} else {
-    		b = pressBtnNum("" + 2);
-    	}
+    	pressBtnNumber("" + 2);
     }
 
     @FXML
     public void pressBtnMul() {
     	operator = '*';
-    	s = "";
+    	aSetNumber();
+    	sNumber = "";
     }
 
     @FXML
     public void pressBtn3() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 3);
-    	} else {
-    		b = pressBtnNum("" + 3);
-    	}
+    	pressBtnNumber("" + 3);
     }
 
     @FXML
     public void pressBtn0() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 0);
-    	} else {
-    		b = pressBtnNum("" + 0);
-    	}
+    	pressBtnNumber("" + 0);
     	
     }
-    
 
     @FXML
     public void pressBtn1() {
-    	if(isaNum()) {
-    		a = pressBtnNum("" + 1);
-    	} else {
-    		b = pressBtnNum("" + 1);
-    	}
+    	pressBtnNumber("" + 1);
     }
 
     @FXML
     public void pressBtnPoi() {
-    	s += ".";
-    	textField.setText(s);
+    	if(textField.getText().contains("."))
+    		return;
+    	sNumber += ".";
+    	textField.setText(sNumber);
     }
     
     @FXML
     public void pressBtnRes() {
-    	dzialanie();
-    	String rS = Double.toString(result);
-    	textField.setText("" + rS);
-    	System.out.println("" + a + operator + b);
+    	bSetNumber();
+    	String a = Double.toString(aI + aD);
+    	String b = Double.toString(bI + bD);
+    	if(a.endsWith(".0") && b.endsWith(".0") && operator != '/') {
+    		dzialanieInteger();
+    	} else {
+    		dzialanieDouble();
+    	}
+    	String result = Double.toString(resultI + resultD);
+    	if(result.endsWith(".0"))
+    		result = result.replace(".0", "");
+    	textField.setText(result);
+    	sprawdzZmienne();
     	reset();
     }
     
-    //dzialania
+    //--------------------------------metody----------------------------------------------------------
     
-    private boolean isaNum() {
-    	return operator == 0;
+    private void pressBtnNumber(String btnNumber) {
+    	sNumber += btnNumber;
+    	textField.setText(sNumber);
     }
-
-    private double pressBtnNum(String number) {
-    	s += number;
-    	Double liczba;
-		liczba = Double.parseDouble(s);
-		String st = liczba.toString();
-		textField.setText(st);
-		return liczba;
+    
+    private boolean isInteger() {
+    	return (!textField.getText().contains("."));
     }
+    
+    private void sprawdzZmienne() {
+    	System.out.println("aI: " + aI + " aD: " + aD + " " + operator + " " + " bI: " + bI + " bD: " + bD + " = "+ " resultI: " + resultI + " resultD: " + resultD);
+    }
+    
+    private void aSetNumber() {
+    	if(isInteger())
+    		aI = Integer.parseInt(sNumber);
+    	else 
+    		aD = Double.parseDouble(sNumber);
+    }
+    
+    private void bSetNumber() {
+    	if(isInteger())
+    		bI = Integer.parseInt(sNumber);
+    	else 
+    		bD = Double.parseDouble(sNumber);
+    }
+    
+    
     
     private void reset() {
-    	a = 0;
-    	b = 0;
+    	aI = 0;
+    	aD = 0;
+    	bI = 0;
+    	bD = 0;
     	operator = 0;
-    	s = "";
-    	result = 0;
+    	sNumber = "";
+    	resultI = 0;
+    	resultD = 0;
     }
-    private void dzialanie() {
+    private void dzialanieInteger() {
     	switch(operator) {
 	    	case '+': 
-	    		result = a + b;
+	    		resultI = aI + bI;
 	    		break;
 	    	case '-':
-	    		result = a - b;
+	    		resultI = aI - bI;
 	    		break;
 	    	case '*':
-	    		result = a * b;
+	    		resultI = aI * bI;
 	    		break;
 	    	case '/':
-	    		result = a / b;
+	    		resultD = aI / bI;
 	    		break;
     	}
     }
-    
+    private void dzialanieDouble() {
+    	switch(operator) {
+	    	case '+': 
+	    		resultD = (aI + aD) + (bI + bD);
+	    		break;
+	    	case '-':
+	    		resultD = (aI + aD) - (bI + bD);
+	    		break;
+	    	case '*':
+	    		resultD = (aI + aD) * (bI + bD);
+	    		break;
+	    	case '/':
+	    		resultD = (aI + aD) / (bI + bD);
+	    		break;
+    	}
+    }
 }
