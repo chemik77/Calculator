@@ -72,9 +72,13 @@ public class Controller implements Initializable{
     @FXML
     private Button btnPoi;
     
+    @FXML
+    private Button btnBS;
+    
     @Override
 	public void initialize(URL link, ResourceBundle resource) {
 		assert btnAC != null : "fx:id=\"btnAC\" was not injected: check your FXML file 'Window.fxml'.";
+		assert btnBS != null : "fx:id=\"btnBS\" was not injected: check your FXML file 'Window.fxml'.";
         assert btnDiv != null : "fx:id=\"btnDiv\" was not injected: check your FXML file 'Window.fxml'.";
         assert textField != null : "fx:id=\"textField\" was not injected: check your FXML file 'Window.fxml'.";
         assert menuBar != null : "fx:id=\"menuBar\" was not injected: check your FXML file 'Window.fxml'.";
@@ -93,6 +97,10 @@ public class Controller implements Initializable{
         assert btn0 != null : "fx:id=\"btn0\" was not injected: check your FXML file 'Window.fxml'.";
         assert btn1 != null : "fx:id=\"btn1\" was not injected: check your FXML file 'Window.fxml'.";
         assert btnPoi != null : "fx:id=\"btnPoi\" was not injected: check your FXML file 'Window.fxml'.";
+        
+        btnBS.setText(Character.toString('\u2190'));
+        btnMul.setText(Character.toString('\u2217'));
+        btnDiv.setText(Character.toString('\u00f7'));
         
         clear();
         
@@ -118,6 +126,15 @@ public class Controller implements Initializable{
     public void pressBtnAC() {
 		clear();
 		reset();
+	}
+	
+	@FXML
+    public void pressBtnBS() {
+		if(sNumber.length() > 0) {
+			sNumber = sNumber.substring(0, sNumber.length()-1);
+			textField.setText(sNumber);
+		} else
+			clear();
 	}
 
     @FXML
@@ -190,6 +207,8 @@ public class Controller implements Initializable{
 
     @FXML
     public void pressBtn0() {
+    	if(textField.getText().equals("0"))
+    		return;
     	pressBtnNumber("" + 0);
     	
     }
@@ -203,8 +222,6 @@ public class Controller implements Initializable{
     public void pressBtnPoi() {
     	if(textField.getText().contains("."))
     		return;
-    	if(textField.getText().isEmpty())
-    		sNumber += "0.";
     	sNumber += ".";
     	textField.setText(sNumber);
     }
@@ -216,9 +233,13 @@ public class Controller implements Initializable{
     	String res = Double.toString(result);
     	if(res.endsWith(".0"))
     		res = res.replace(".0", "");
+//    	if(res.length() > 16)
+//    		res = String.format("%.16f", result);
     	textField.setText(res);
     	sprawdzZmienne();
+    	double temp = result;
     	reset();
+    	a = temp;
     }
     
     //--------------------------------metody----------------------------------------------------------
@@ -235,11 +256,13 @@ public class Controller implements Initializable{
     }
     
     private void aSetNumber() {
-    		a = Double.parseDouble(sNumber);
+    	if(sNumber.isEmpty())
+    		return;
+    	a = Double.parseDouble(sNumber);
     }
     
     private void bSetNumber() {
-    		b = Double.parseDouble(sNumber);
+    	b = Double.parseDouble(sNumber);
     }
     
     

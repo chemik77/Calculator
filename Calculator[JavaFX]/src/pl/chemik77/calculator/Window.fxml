@@ -98,7 +98,7 @@
       </Button>
       <Button fx:id="btnPoi" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnPoi" prefHeight="40.0" prefWidth="45.0" text="," textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="7">
          <font>
-            <Font name="Arial" size="16.0" />
+            <Font name="Arial" size="18.0" />
          </font>
       </Button>
       <Button fx:id="btnAC" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnAC" prefHeight="40.0" prefWidth="45.0" text="AC" textAlignment="CENTER" GridPane.rowIndex="3">
@@ -108,32 +108,32 @@
       </Button>
       <Button fx:id="btnAdd" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnAdd" prefHeight="40.0" prefWidth="45.0" text="+" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="7">
          <font>
-            <Font name="Arial" size="16.0" />
+            <Font name="Arial" size="18.0" />
          </font>
       </Button>
       <Button fx:id="btnSub" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnSub" prefHeight="40.0" prefWidth="45.0" text="-" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="6">
          <font>
-            <Font name="Arial" size="16.0" />
+            <Font name="Arial" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnMul" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnMul" prefHeight="40.0" prefWidth="45.0" text="*" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="5">
+      <Button fx:id="btnMul" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnMul" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <font>
-            <Font name="Arial" size="16.0" />
+            <Font name="Arial" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnDiv" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnDiv" prefHeight="40.0" prefWidth="45.0" text="/" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="4">
+      <Button fx:id="btnDiv" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnDiv" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="4">
          <font>
-            <Font name="Arial" size="16.0" />
+            <Font name="Arial" size="18.0" />
          </font>
       </Button>
       <Button fx:id="btnRes" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnRes" prefHeight="82.0" prefWidth="45.0" text="=" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="6" GridPane.rowSpan="2">
          <font>
-            <Font name="Arial" size="16.0" />
+            <Font name="Arial" size="18.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Button fx:id="btnBS" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#pressBtnBS" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
-            <Font name="Arial" size="16.0" />
+            <Font name="Arial" size="18.0" />
          </font>
       </Button>
       <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="45.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
