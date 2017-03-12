@@ -3,15 +3,11 @@ package pl.chemik77.calculator;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 
 public class Controller implements Initializable{
 
@@ -113,14 +109,14 @@ public class Controller implements Initializable{
     
 	//--------------------------------initialize logic----------------------------------------------------
 
-	//--------------------------------składowe----------------------------------------------------------
+	//--------------------------------parameters----------------------------------------------------------
 	
 	double a, b;
 	String sNumber = "";
 	char operator;
 	double result;
 	
-	//--------------------------------metody FXML----------------------------------------------------------
+	//--------------------------------methods FXML----------------------------------------------------------
 	
 	@FXML
     public void pressBtnAC() {
@@ -229,30 +225,27 @@ public class Controller implements Initializable{
     @FXML
     public void pressBtnRes() {
     	bSetNumber();
-    	dzialanie();
+    	operations();
     	String res = Double.toString(result);
     	if(res.endsWith(".0"))
     		res = res.replace(".0", "");
+//		***to correction***
 //    	if(res.length() > 16)
 //    		res = String.format("%.16f", result);
     	textField.setText(res);
-    	sprawdzZmienne();
+    	//checkVariables();
     	double temp = result;
     	reset();
     	a = temp;
     }
     
-    //--------------------------------metody----------------------------------------------------------
+    //--------------------------------methods----------------------------------------------------------
     
     private void pressBtnNumber(String btnNumber) {
     	if(sNumber.length() == 17)
     		return;
     	sNumber += btnNumber;
     	textField.setText(sNumber);
-    }
-    
-    private void sprawdzZmienne() {
-    	System.out.println(a + " " + operator + " " + b + " = " + result);
     }
     
     private void aSetNumber() {
@@ -265,8 +258,6 @@ public class Controller implements Initializable{
     	b = Double.parseDouble(sNumber);
     }
     
-    
-    
     private void reset() {
     	a = 0;
     	b = 0;
@@ -275,7 +266,7 @@ public class Controller implements Initializable{
     	result = 0;
     }
     
-    private void dzialanie() {
+    private void operations() {
     	switch(operator) {
 	    	case '+': 
 	    		result = a + b;
@@ -290,5 +281,9 @@ public class Controller implements Initializable{
 	    		result = a / b;
 	    		break;
     	}
+    }
+    
+    private void checkVariables() {
+    	System.out.println(a + " " + operator + " " + b + " = " + result);
     }
 }

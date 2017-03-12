@@ -29,7 +29,7 @@ public class Main extends Application{
 		
 		Scene scene = new Scene(grid);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Kalkulator");
+		primaryStage.setTitle("Calculator");
 		primaryStage.setResizable(false);
 		primaryStage.show();
 		
