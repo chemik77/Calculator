@@ -99,12 +99,10 @@ public class Controller implements Initializable{
         btnDiv.setText(Character.toString('\u00f7'));
         
         clear();
-        
 	}
 	
 	private void clear() {
 		textField.setText("0");
-		
 	}
     
 	//--------------------------------initialize logic----------------------------------------------------
@@ -112,7 +110,7 @@ public class Controller implements Initializable{
 	//--------------------------------parameters----------------------------------------------------------
 	
 	double a, b;
-	String sNumber = "";
+	String sNumber = "0";
 	char operator;
 	double result;
 	
@@ -126,11 +124,15 @@ public class Controller implements Initializable{
 	
 	@FXML
     public void pressBtnBS() {
-		if(sNumber.length() > 0) {
+		if(sNumber.equals("0")) {
+			return;
+		} else if(sNumber.length() > 0) {
 			sNumber = sNumber.substring(0, sNumber.length()-1);
-			textField.setText(sNumber);
-		} else
-			clear();
+		}
+		if(sNumber.equals("")) {
+			sNumber = "0";
+		}
+		textField.setText(sNumber);
 	}
 
     @FXML
@@ -233,10 +235,12 @@ public class Controller implements Initializable{
 //    	if(res.length() > 16)
 //    		res = String.format("%.16f", result);
     	textField.setText(res);
-    	//checkVariables();
+    	checkVariables();
+//		***to correction***
     	double temp = result;
     	reset();
     	a = temp;
+    	test();
     }
     
     //--------------------------------methods----------------------------------------------------------
@@ -244,6 +248,8 @@ public class Controller implements Initializable{
     private void pressBtnNumber(String btnNumber) {
     	if(sNumber.length() == 17)
     		return;
+    	if(sNumber.equals("0"))
+    		sNumber = "";
     	sNumber += btnNumber;
     	textField.setText(sNumber);
     }
@@ -262,7 +268,7 @@ public class Controller implements Initializable{
     	a = 0;
     	b = 0;
     	operator = 0;
-    	sNumber = "";
+    	sNumber = "0";
     	result = 0;
     }
     
@@ -285,5 +291,8 @@ public class Controller implements Initializable{
     
     private void checkVariables() {
     	System.out.println(a + " " + operator + " " + b + " = " + result);
+    }
+    private void test() {
+    	System.out.println();
     }
 }
