@@ -1,5 +1,8 @@
 package pl.chemik77.calculator;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -109,10 +112,10 @@ public class Controller implements Initializable{
 
 	//--------------------------------parameters----------------------------------------------------------
 	
-	double a, b;
+	BigDecimal a, b;
 	String sNumber = "0";
 	char operator;
-	double result;
+	BigDecimal result;
 	
 	//--------------------------------methods FXML----------------------------------------------------------
 	
@@ -228,19 +231,14 @@ public class Controller implements Initializable{
     public void pressBtnRes() {
     	bSetNumber();
     	operations();
-    	String res = Double.toString(result);
+    	result = result.round(new MathContext(14, RoundingMode.HALF_UP));
+    	String res = result.toString();
     	if(res.endsWith(".0"))
     		res = res.replace(".0", "");
-//		***to correction***
-//    	if(res.length() > 16)
-//    		res = String.format("%.16f", result);
     	textField.setText(res);
-    	checkVariables();
+    	//checkVariables();
 //		***to correction***
-    	double temp = result;
     	reset();
-    	a = temp;
-    	test();
     }
     
     //--------------------------------methods----------------------------------------------------------
@@ -257,42 +255,39 @@ public class Controller implements Initializable{
     private void aSetNumber() {
     	if(sNumber.isEmpty())
     		return;
-    	a = Double.parseDouble(sNumber);
+    	a = new BigDecimal(sNumber);
     }
     
     private void bSetNumber() {
-    	b = Double.parseDouble(sNumber);
+    	b = new BigDecimal(sNumber);
     }
     
     private void reset() {
-    	a = 0;
-    	b = 0;
+    	a = BigDecimal.valueOf(0);
+    	b = BigDecimal.valueOf(0);
     	operator = 0;
     	sNumber = "0";
-    	result = 0;
+    	result = BigDecimal.valueOf(0);
     }
     
     private void operations() {
     	switch(operator) {
 	    	case '+': 
-	    		result = a + b;
+	    		result = a.add(b);
 	    		break;
 	    	case '-':
-	    		result = a - b;
+	    		result = a.subtract(b);
 	    		break;
 	    	case '*':
-	    		result = a * b;
+	    		result = a.multiply(b);
 	    		break;
 	    	case '/':
-	    		result = a / b;
+	    		result = a.divide(b, MathContext.DECIMAL64);
 	    		break;
     	}
     }
     
     private void checkVariables() {
     	System.out.println(a + " " + operator + " " + b + " = " + result);
-    }
-    private void test() {
-    	System.out.println();
     }
 }
