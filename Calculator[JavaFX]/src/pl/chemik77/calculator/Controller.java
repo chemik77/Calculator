@@ -74,6 +74,21 @@ public class Controller implements Initializable{
     @FXML
     private Button btnBS;
     
+    @FXML
+    private Button btnPlusMin;
+    
+    @FXML
+    private Button btnFract;
+    
+    @FXML
+    private Button btnPow;
+    
+    @FXML
+    private Button btnSqrt;
+    
+    @FXML
+    private Button btnPerc;
+    
     @Override
 	public void initialize(URL link, ResourceBundle resource) {
 		assert btnAC != null : "fx:id=\"btnAC\" was not injected: check your FXML file 'Window.fxml'.";
@@ -96,10 +111,21 @@ public class Controller implements Initializable{
         assert btn0 != null : "fx:id=\"btn0\" was not injected: check your FXML file 'Window.fxml'.";
         assert btn1 != null : "fx:id=\"btn1\" was not injected: check your FXML file 'Window.fxml'.";
         assert btnPoi != null : "fx:id=\"btnPoi\" was not injected: check your FXML file 'Window.fxml'.";
+        assert btnPlusMin != null : "fx:id=\"btnPlusMin\" was not injected: check your FXML file 'Window.fxml'.";
+        assert btnFract != null : "fx:id=\"btnFract\" was not injected: check your FXML file 'Window.fxml'.";
+        assert btnPow != null : "fx:id=\"btnPow\" was not injected: check your FXML file 'Window.fxml'.";
+        assert btnSqrt != null : "fx:id=\"btnSqrt\" was not injected: check your FXML file 'Window.fxml'.";
+        assert btnPerc != null : "fx:id=\"btnPerc\" was not injected: check your FXML file 'Window.fxml'.";
+        
         
         btnBS.setText(Character.toString('\u2190'));
         btnMul.setText(Character.toString('\u2217'));
         btnDiv.setText(Character.toString('\u00f7'));
+        btnSqrt.setText("" + '\u00B2' + '\u221A');
+        btnPlusMin.setText(Character.toString('\u00B1'));
+        btnPow.setText("x^y");
+        
+        
         
         clear();
 	}
@@ -119,6 +145,7 @@ public class Controller implements Initializable{
 	
 	//--------------------------------methods FXML----------------------------------------------------------
 	
+	//--------- clear and backspace ------------------
 	@FXML
     public void pressBtnAC() {
 		clear();
@@ -137,12 +164,12 @@ public class Controller implements Initializable{
 		}
 		textField.setText(sNumber);
 	}
+	
+	//--------- numbers and point ------------------
 
     @FXML
-    public void pressBtnDiv() {
-    	operator = '/';
-    	aSetNumber();
-    	sNumber = "";
+    public void pressBtn9() {
+    	pressBtnNumber("" + 9);
     }
 
     @FXML
@@ -151,37 +178,13 @@ public class Controller implements Initializable{
     }
 
     @FXML
-    public void pressBtn9() {
-    	pressBtnNumber("" + 9);
-    }
-
-    @FXML
-    public void pressBtn6() {
-    	pressBtnNumber("" + 6);
-    }
-
-    @FXML
-    public void pressBtnSub() {
-    	operator = '-';
-    	aSetNumber();
-    	sNumber = "";
-    }
-
-    @FXML
     public void pressBtn7() {
     	pressBtnNumber("" + 7);
     }
-
+    
     @FXML
-    public void pressBtnAdd() {
-    	operator = '+';
-    	aSetNumber();
-    	sNumber = "";
-    }
-
-    @FXML
-    public void pressBtn4() {
-    	pressBtnNumber("" + 4);
+    public void pressBtn6() {
+    	pressBtnNumber("" + 6);
     }
 
     @FXML
@@ -190,20 +193,23 @@ public class Controller implements Initializable{
     }
 
     @FXML
-    public void pressBtn2() {
-    	pressBtnNumber("" + 2);
-    }
-
-    @FXML
-    public void pressBtnMul() {
-    	operator = '*';
-    	aSetNumber();
-    	sNumber = "";
+    public void pressBtn4() {
+    	pressBtnNumber("" + 4);
     }
 
     @FXML
     public void pressBtn3() {
     	pressBtnNumber("" + 3);
+    }
+
+    @FXML
+    public void pressBtn2() {
+    	pressBtnNumber("" + 2);
+    }
+
+    @FXML
+    public void pressBtn1() {
+    	pressBtnNumber("" + 1);
     }
 
     @FXML
@@ -213,12 +219,7 @@ public class Controller implements Initializable{
     	pressBtnNumber("" + 0);
     	
     }
-
-    @FXML
-    public void pressBtn1() {
-    	pressBtnNumber("" + 1);
-    }
-
+    
     @FXML
     public void pressBtnPoi() {
     	if(textField.getText().contains("."))
@@ -227,17 +228,97 @@ public class Controller implements Initializable{
     	textField.setText(sNumber);
     }
     
+  //--------- operators ------------------
+    
+    @FXML
+    public void pressBtnSub() {
+    	operator = '-';
+    	aSetNumber();
+    	sNumber = "";
+    }
+
+    @FXML
+    public void pressBtnAdd() {
+    	operator = '+';
+    	aSetNumber();
+    	sNumber = "";
+    }
+    
+    @FXML
+    public void pressBtnMul() {
+    	operator = '*';
+    	aSetNumber();
+    	sNumber = "";
+    }
+    
+    @FXML
+    public void pressBtnDiv() {
+    	operator = '/';
+    	aSetNumber();
+    	sNumber = "";
+    }
+    
+    @FXML
+    public void pressBtnPlusMin() {
+    	if(textField.getText().equals("0"))
+    		return;
+    	else 
+    		sNumber = "-" + sNumber;
+    	textField.setText(sNumber);
+    }
+    
+    @FXML
+    public void pressBtnFract() {
+    	if(textField.getText().equals("0"))
+    		return;
+    	else {
+    		BigDecimal num = new BigDecimal(textField.getText());
+    		num = new BigDecimal("1").divide(num, MathContext.DECIMAL64);
+    		sNumber = num.toString();
+    	}
+    	textField.setText(sNumber);
+    	reset();
+    }
+    
+    @FXML
+    public void pressBtnPow() {
+    	operator = '^';
+    	aSetNumber();
+    	sNumber = "";
+    }
+
+    @FXML
+    public void pressBtnSqrt() {
+    	if(textField.getText().equals("0"))
+    		return;
+    	else {
+    		Double numD = Double.parseDouble(textField.getText());
+    		numD = Math.sqrt(numD);
+    		sNumber = numD.toString();
+    		if(sNumber.endsWith(".0"))
+        		sNumber = sNumber.replace(".0", "");
+        	textField.setText(sNumber);
+        	reset();
+    	}
+    }
+    
+    @FXML
+    public void pressBtnPerc() {
+    	//to do
+    }
+    
+    //--------- result ------------------
+    
     @FXML
     public void pressBtnRes() {
     	bSetNumber();
     	operations();
-    	result = result.round(new MathContext(14, RoundingMode.HALF_UP));
+    	result = result.round(new MathContext(13, RoundingMode.HALF_UP));
     	String res = result.toString();
     	if(res.endsWith(".0"))
     		res = res.replace(".0", "");
     	textField.setText(res);
     	//checkVariables();
-//		***to correction***
     	reset();
     }
     
@@ -283,6 +364,9 @@ public class Controller implements Initializable{
 	    		break;
 	    	case '/':
 	    		result = a.divide(b, MathContext.DECIMAL64);
+	    		break;
+	    	case '^':
+	    		result = a.pow(b.intValue(), MathContext.DECIMAL64);
 	    		break;
     	}
     }
